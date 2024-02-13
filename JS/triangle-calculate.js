@@ -167,3 +167,31 @@ function calculateEllipseArea() {
 
   }
 }
+
+//! ----------------------------- Fully Dynamic Way --------------------
+
+function calculateParallelogramArea() {
+  const base = getInputValueById('parallelogram-base');
+  const height = getInputValueById('parallelogram-height');
+  area = base * height;
+  return setInnerTextById('parallelogram-area', area,'parallelogram-secret-text');
+}
+
+function getInputValueById(inputFieldId) {
+  const inputField = document.getElementById(inputFieldId);
+  const inputText = inputField.value;
+  const input = parseFloat(inputText);
+  return input;
+}
+
+function setInnerTextById(elementId, area, secretTextId,) {
+  const inputAreaSpan = document.getElementById(elementId);
+
+  if (Number.isNaN(area)) {
+    inputAreaSpan.innerText = 'Please provide number value in cm';
+    document.getElementById(secretTextId).innerText = '';
+  } else {
+    inputAreaSpan.innerText = area;
+    document.getElementById(secretTextId).innerText = 'cm²';
+  }
+}
